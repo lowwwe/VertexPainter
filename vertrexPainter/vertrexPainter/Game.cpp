@@ -112,10 +112,26 @@ void Game::processKeys(sf::Event t_event)
 		m_vertexArray.setPrimitiveType(sf::Triangles);
 		std::cout << "now Drawing triangles" << std::endl;
 	}
+	if (sf::Keyboard::Num3 == t_event.key.code)
+	{
+		m_vertexArray.clear();
+		m_vertexArray.setPrimitiveType(sf::TriangleStrip);
+	}
+	if (sf::Keyboard::Num4 == t_event.key.code)
+	{
+		m_vertexArray.clear();
+		m_vertexArray.setPrimitiveType(sf::Quads);
+	}
+
 	if (sf::Keyboard::R == t_event.key.code)
 	{
 		m_colour = sf::Color::Red;
 		std::cout << "now drawing in Red" << std::endl;
+	}
+	if (sf::Keyboard::Slash == t_event.key.code
+		&& sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+	{
+		m_colour = sf::Color(128, 128, 128, 40);
 	}
 }
 
