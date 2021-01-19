@@ -95,11 +95,27 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
+	if (sf::Keyboard::Num0 == t_event.key.code)
+	{
+		m_vertexArray.clear();
+		m_vertexArray.setPrimitiveType(sf::Points);
+	}
 	if (sf::Keyboard::Num1 == t_event.key.code)
 	{
 		m_vertexArray.clear();
 		m_vertexArray.setPrimitiveType(sf::Lines);
 		std::cout << " Now drawing Lines" << std::endl;
+	}
+	if (sf::Keyboard::Num2 == t_event.key.code)
+	{
+		m_vertexArray.clear();
+		m_vertexArray.setPrimitiveType(sf::Triangles);
+		std::cout << "now Drawing triangles" << std::endl;
+	}
+	if (sf::Keyboard::R == t_event.key.code)
+	{
+		m_colour = sf::Color::Red;
+		std::cout << "now drawing in Red" << std::endl;
 	}
 }
 
