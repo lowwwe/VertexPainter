@@ -77,6 +77,10 @@ void Game::processEvents()
 		{
 			processKeys(newEvent);
 		}
+		if (sf::Event::MouseButtonPressed == newEvent.type)
+		{
+			processMouseClick(newEvent);
+		}
 	}
 }
 
@@ -91,6 +95,15 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
+}
+
+void Game::processMouseClick(sf::Event t_event)
+{
+	sf::Vertex nextVertex;
+	nextVertex.color = m_colour;
+	nextVertex.position.x = t_event.mouseButton.x;
+	nextVertex.position.y = t_event.mouseButton.y;
+	m_vertexArray.append(nextVertex);
 }
 
 /// <summary>
@@ -113,6 +126,7 @@ void Game::render()
 	m_window.clear(sf::Color::White);
 	m_window.draw(m_welcomeMessage);
 	m_window.draw(m_logoSprite);
+	m_window.draw(m_vertexArray);
 	m_window.display();
 }
 
