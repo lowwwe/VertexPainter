@@ -1,8 +1,8 @@
 /// <summary>
 /// @author Peter Lowe
-/// @date May 2019
+/// @date Jan 2021
 ///
-/// you need to change the above lines or lose marks
+/// "Simple " program to draw using vertex arrays
 /// </summary>
 
 #include "Game.h"
@@ -95,15 +95,27 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
+	if (sf::Keyboard::Num1 == t_event.key.code)
+	{
+		m_vertexArray.clear();
+		m_vertexArray.setPrimitiveType(sf::Lines);
+		std::cout << " Now drawing Lines" << std::endl;
+	}
 }
 
+/// <summary>
+/// take coo-iorindates from mouse cliock and use to
+// create a new vertex suing current colour
+// then add to vertex array
+/// </summary>
+/// <param name="t_event">windows system evewnt should be a mouse down press</param>
 void Game::processMouseClick(sf::Event t_event)
 {
-	sf::Vertex nextVertex;
+	sf::Vertex nextVertex; // local variable
 	nextVertex.color = m_colour;
 	nextVertex.position.x = t_event.mouseButton.x;
 	nextVertex.position.y = t_event.mouseButton.y;
-	m_vertexArray.append(nextVertex);
+	m_vertexArray.append(nextVertex); // makes a copy of the vertex
 }
 
 /// <summary>
